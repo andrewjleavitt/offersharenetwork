@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 
+  name: MyString
+  description: MyString
+  reward_description: MyString
+  reward_factor: MyString
+  redemption_value: MyString
+  active: false
+  image_url: MyString
+  published: 2014-08-24
+  expires: 2014-08-24
+
+two:
+  customer_id: 
+  name: MyString
+  description: MyString
+  reward_description: MyString
+  reward_factor: MyString
+  redemption_value: MyString
+  active: false
+  image_url: MyString
+  published: 2014-08-24
+  expires: 2014-08-24

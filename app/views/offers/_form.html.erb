@@ -1,0 +1,57 @@
+<%= form_for(@offer) do |f| %>
+  <% if @offer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+
+      <ul>
+      <% @offer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :customer_id %><br>
+    <%= f.text_field :customer_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :reward_description %><br>
+    <%= f.text_field :reward_description %>
+  </div>
+  <div class="field">
+    <%= f.label :reward_factor %><br>
+    <%= f.text_field :reward_factor %>
+  </div>
+  <div class="field">
+    <%= f.label :redemption_value %><br>
+    <%= f.text_field :redemption_value %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br>
+    <%= f.check_box :active %>
+  </div>
+  <div class="field">
+    <%= f.label :image_url %><br>
+    <%= f.text_field :image_url %>
+  </div>
+  <div class="field">
+    <%= f.label :published %><br>
+    <%= f.date_select :published %>
+  </div>
+  <div class="field">
+    <%= f.label :expires %><br>
+    <%= f.date_select :expires %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

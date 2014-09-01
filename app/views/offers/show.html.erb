@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @offer.customer %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @offer.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @offer.description %>
+</p>
+
+<p>
+  <strong>Reward description:</strong>
+  <%= @offer.reward_description %>
+</p>
+
+<p>
+  <strong>Reward factor:</strong>
+  <%= @offer.reward_factor %>
+</p>
+
+<p>
+  <strong>Redemption value:</strong>
+  <%= @offer.redemption_value %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @offer.active %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @offer.image_url %>
+</p>
+
+<p>
+  <strong>Published:</strong>
+  <%= @offer.published %>
+</p>
+
+<p>
+  <strong>Expires:</strong>
+  <%= @offer.expires %>
+</p>
+
+<%= link_to 'Edit', edit_offer_path(@offer) %> |
+<%= link_to 'Back', offers_path %>
