@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  offer_share_id: 
+  rewarded_on: 2014-09-01 12:47:25
+
+two:
+  offer_share_id: 
+  rewarded_on: 2014-09-01 12:47:25

@@ -20,7 +20,7 @@
   <tbody>
     <% @offers.each do |offer| %>
       <tr>
-        <td><%= offer.customer %></td>
+        <td><%= offer.customer.name %></td>
         <td><%= offer.name %></td>
         <td><%= offer.description %></td>
         <td><%= offer.reward_description %></td>

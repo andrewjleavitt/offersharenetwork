@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Offer:</strong>
+  <%= @offer_share.offer %>
+</p>
+
+<p>
+  <strong>Advocate:</strong>
+  <%= @offer_share.advocate %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @offer_share.code %>
+</p>
+
+<%= link_to 'Edit', edit_offer_share_path(@offer_share) %> |
+<%= link_to 'Back', offer_shares_path %>

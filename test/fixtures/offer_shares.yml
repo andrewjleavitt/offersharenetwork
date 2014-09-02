@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  offer_id: 
+  advocate_id: 
+  code: MyString
+
+two:
+  offer_id: 
+  advocate_id: 
+  code: MyString

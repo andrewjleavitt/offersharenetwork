@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Osn</title>
+  <title>OfferShareNetwork</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<h1>OfferShareNetwork.com</h1>
+
+<div class="navigation">
+  <ul>
+    <li><%= link_to 'Home', controller: "home", action: "index" %></li>
+    <li><%= link_to 'Customers', customers_path %></li>
+    <li><%= link_to 'Offers', offers_path %></li>
+    <li><%= link_to 'Advocates', advocates_path %></li>
+    <li><%= link_to 'OfferShares', offer_shares_path %></li>
+    <li><%= link_to 'Redemptions', redemptions_path %></li>
+    <li><%= link_to 'Rewards', rewards_path %></li>
+  </ul>
+</div>
 
 <%= yield %>
 

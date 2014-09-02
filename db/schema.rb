@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140824155156) do
+ActiveRecord::Schema.define(version: 20140901184725) do
+
+  create_table "advocates", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "customers", force: true do |t|
     t.string   "name"
@@ -30,6 +37,17 @@ ActiveRecord::Schema.define(version: 20140824155156) do
     t.datetime "updated_at"
   end
 
+  create_table "offer_shares", force: true do |t|
+    t.integer  "offer_id"
+    t.integer  "advocate_id"
+    t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "offer_shares", ["advocate_id"], name: "index_offer_shares_on_advocate_id"
+  add_index "offer_shares", ["offer_id"], name: "index_offer_shares_on_offer_id"
+
   create_table "offers", force: true do |t|
     t.integer  "customer_id"
     t.string   "name"
@@ -46,5 +64,22 @@ ActiveRecord::Schema.define(version: 20140824155156) do
   end
 
   add_index "offers", ["customer_id"], name: "index_offers_on_customer_id"
+
+  create_table "redemptions", force: true do |t|
+    t.integer  "offer_share_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "redemptions", ["offer_share_id"], name: "index_redemptions_on_offer_share_id"
+
+  create_table "rewards", force: true do |t|
+    t.integer  "offer_share_id"
+    t.datetime "rewarded_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rewards", ["offer_share_id"], name: "index_rewards_on_offer_share_id"
 
 end

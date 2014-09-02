@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :customer_id %><br>
-    <%= f.text_field :customer_id %>
+    <%= f.label 'Customer' %><br>
+    <%= f.select :customer_id, options_from_collection_for_select(@customers,"id","name") %>
   </div>
   <div class="field">
     <%= f.label :name %><br>

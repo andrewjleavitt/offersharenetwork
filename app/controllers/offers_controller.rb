@@ -14,6 +14,7 @@ class OffersController < ApplicationController
 
   # GET /offers/new
   def new
+    @customers = Customer.all
     @offer = Offer.new
   end
 
