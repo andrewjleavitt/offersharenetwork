@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
+
+  devise_for :users, :controllers => { :registrations => "registrations" }
+
   resources :rewards
 
   resources :redemptions
@@ -7,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :advocates
 
-  root 'home#index'
+  root  "home#index"
 
   resources :customers
 

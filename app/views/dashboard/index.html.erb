@@ -1,0 +1,3 @@
+<h1>Dashboard for <%= current_user.customer.name %></h1>
+
+<h2><%= link_to('Create first offer', new_offer_path) unless current_user.customer.offers.count > 0 %></h2>

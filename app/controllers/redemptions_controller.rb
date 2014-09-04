@@ -24,6 +24,7 @@ class RedemptionsController < ApplicationController
   # POST /redemptions
   # POST /redemptions.json
   def create
+    # offer_share = OfferShare.find_by_code
     @redemption = Redemption.new(redemption_params)
 
     respond_to do |format|

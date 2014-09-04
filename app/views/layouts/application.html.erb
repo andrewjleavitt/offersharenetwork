@@ -11,14 +11,21 @@
 
 <div class="navigation">
   <ul>
-    <li><%= link_to 'Home', controller: "home", action: "index" %></li>
+    <li><%= link_to 'Home', "/" %></li>
     <li><%= link_to 'Customers', customers_path %></li>
     <li><%= link_to 'Offers', offers_path %></li>
     <li><%= link_to 'Advocates', advocates_path %></li>
     <li><%= link_to 'OfferShares', offer_shares_path %></li>
     <li><%= link_to 'Redemptions', redemptions_path %></li>
     <li><%= link_to 'Rewards', rewards_path %></li>
+    <%= render 'devise/menu/registration_items' %>
+    <%= render 'devise/menu/login_items' %>
   </ul>
+</div>
+
+<div class="notifications">
+ <p class="notice"><%= notice %></p>
+ <p class="alert"><%= alert %></p>
 </div>
 
 <%= yield %>
