@@ -28,6 +28,8 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
+        current_user.customer_id = @customer.id
+        current_user.save
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
         format.json { render :show, status: :created, location: @customer }
       else

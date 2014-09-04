@@ -2,7 +2,7 @@
 
 <p>
   <strong>Customer:</strong>
-  <%= @offer.customer %>
+  <%= @offer.customer.name %>
 </p>
 
 <p>
@@ -49,6 +49,27 @@
   <strong>Expires:</strong>
   <%= @offer.expires %>
 </p>
+
+<table>
+  <thead>
+    <tr>
+      <td>Advocate</td>
+      <td>Redemptions</td>
+      <td>Projected ROI</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @offer.offer_shares.each do |offer_share| %>
+    <tr>
+      <td><%= offer_share.advocate.email %></td>
+      <td><%= offer_share.redemptions.count %></td>
+      <td><%= offer_share.redemptions.count * @offer.redemption_value.to_i %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to 'Create Offer Share', new_offer_share_path(@offer, current_user) %>
 
 <%= link_to 'Edit', edit_offer_path(@offer) %> |
 <%= link_to 'Back', offers_path %>
