@@ -3,6 +3,8 @@ class OfferShare < ActiveRecord::Base
   belongs_to :advocate
   has_many :redemptions
 
+  # validates :code, uniqueness
+
   before_create :create_code
 
   protected

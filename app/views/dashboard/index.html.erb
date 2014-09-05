@@ -1,3 +1,23 @@
 <h1>Dashboard for <%= current_user.customer.name %></h1>
 
 <h2><%= link_to('Create first offer', new_offer_path) unless current_user.customer.offers.count > 0 %></h2>
+
+
+<table>
+  <thead>
+    <tr>
+      <td>Offer</td>
+      <td>Advocates</td>
+      <td>Redemptions</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customer.offers.each do |offer| %>
+    <tr>
+      <td><%= offer.name %></td>
+      <td><%= offer.offer_shares.count %></td>
+      <td><%= offer.offer_redemption_count %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -10,5 +10,5 @@ class Offer < ActiveRecord::Base
 
     return redemptions
   end
-  
+
 end
