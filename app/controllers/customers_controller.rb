@@ -1,6 +1,8 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
+  before_filter :validate_customer, except: [:new, :create]
+
   # GET /customers
   # GET /customers.json
   def index
@@ -15,6 +17,7 @@ class CustomersController < ApplicationController
   # GET /customers/new
   def new
     @customer = Customer.new
+    # raise current_user.to_yaml
   end
 
   # GET /customers/1/edit

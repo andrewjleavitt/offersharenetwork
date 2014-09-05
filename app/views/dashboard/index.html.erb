@@ -1,14 +1,22 @@
-<h1>Dashboard for <%= current_user.customer.name %></h1>
+<% content_for :header, "Dashboard" %>
 
-<h2><%= link_to('Create first offer', new_offer_path) unless current_user.customer.offers.count > 0 %></h2>
+<% if current_user.customer.offers.count == 0 %>
+<h3>You don't have any offers yet.
+<small><%= link_to('Create first offer now', new_offer_path)  %></small>
+<% end %>
 
-
-<table>
+<% if @customer.offers.count > 0 %>
+<h3 class="page-header">Offers</h3>
+<table class="table table-hover">
   <thead>
     <tr>
-      <td>Offer</td>
-      <td>Advocates</td>
-      <td>Redemptions</td>
+      <th>Offer</th>
+      <th>Advocates</th>
+      <th>Redemptions</th>
+      <th>Published?</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -17,7 +25,19 @@
       <td><%= offer.name %></td>
       <td><%= offer.offer_shares.count %></td>
       <td><%= offer.offer_redemption_count %></td>
+      <% status_icon = offer.active ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger' %>
+      <td><span class="glyphicon <%= status_icon  %>"></span></td>
+      <td><%= link_to("edit", edit_offer_path(offer)) %>
+      <td><%= link_to("view", offer_path(offer)) %>
+      <td>
+        <% if offer.published.nil? %>
+          <%= link_to("publish", offer_path(offer)) %>
+        <% end %>
+        <% if !offer.published.nil? && Date.new < offer.expires %>
+          <%= link_to("stop", offer_path(offer)) %>
+        <% end %>
     </tr>
     <% end %>
   </tbody>
 </table>
+<% end %>

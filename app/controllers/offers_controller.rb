@@ -1,5 +1,6 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
+  before_filter :validate_customer
 
   # GET /offers
   # GET /offers.json

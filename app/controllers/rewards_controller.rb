@@ -1,5 +1,6 @@
 class RewardsController < ApplicationController
   before_action :set_reward, only: [:show, :edit, :update, :destroy]
+  before_filter :validate_customer
 
   # GET /rewards
   # GET /rewards.json
