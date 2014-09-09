@@ -3,12 +3,13 @@ class OfferShare < ActiveRecord::Base
   belongs_to :advocate
   has_many :redemptions
 
-  # validates :code, uniqueness
+  validates :code, uniqueness: true
 
   before_create :create_code
 
   protected
     def create_code
       self.code = ('a'..'z').to_a.shuffle[0,3].join + '-' + ('a'..'z').to_a.shuffle[0,3].join
+      self.create_code unless self.valid?
     end
 end

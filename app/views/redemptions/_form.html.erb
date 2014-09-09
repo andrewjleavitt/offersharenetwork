@@ -1,21 +1,10 @@
-<%= form_for(@redemption) do |f| %>
-  <% if @redemption.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@redemption.errors.count, "error") %> prohibited this redemption from being saved:</h2>
-
-      <ul>
-      <% @redemption.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_tag do  %>
 
   <div class="field">
-    <%= f.label :offer_share_id %><br>
-    <%= f.text_field :offer_share_id %>
+    <%= label_tag :offer_share_code %><br>
+    <%= text_field_tag :offer_share_code %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= submit_tag 'redeem code' %>
   </div>
 <% end %>

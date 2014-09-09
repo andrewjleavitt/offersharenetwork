@@ -1,25 +1,6 @@
-<h1>Listing redemptions</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Offer share</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<h1>New redemption</h1>
 
-  <tbody>
-    <% @redemptions.each do |redemption| %>
-      <tr>
-        <td><%= redemption.offer_share %></td>
-        <td><%= link_to 'Show', redemption %></td>
-        <td><%= link_to 'Edit', edit_redemption_path(redemption) %></td>
-        <td><%= link_to 'Destroy', redemption, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'form' %>
 
-<br>
-
-<%= link_to 'New Redemption', new_redemption_path %>
+<%= link_to 'Back', redemptions_path %>

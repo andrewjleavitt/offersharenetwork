@@ -4,7 +4,8 @@ class RedemptionsController < ApplicationController
   # GET /redemptions
   # GET /redemptions.json
   def index
-    @redemptions = Redemption.all
+    # @redemptions = Redemption.all
+    @redemption = Redemption.new
   end
 
   # GET /redemptions/1
@@ -24,16 +25,17 @@ class RedemptionsController < ApplicationController
   # POST /redemptions
   # POST /redemptions.json
   def create
-    @redemption = Redemption.new(redemption_params)
+    # raise redemption_params['offer_share_code'].to_yaml
+    @offer_share = OfferShare.find_by(code: redemption_params['offer_share_code'])
 
-    respond_to do |format|
-      if @redemption.save
-        format.html { redirect_to @redemption, notice: 'Redemption was successfully created.' }
-        format.json { render :show, status: :created, location: @redemption }
-      else
-        format.html { render :new }
-        format.json { render json: @redemption.errors, status: :unprocessable_entity }
-      end
+    @redemption = Redemption.new({
+      offer_share: @offer_share
+    })
+
+    if @redemption.save
+      redirect_to @redemption, notice: 'Redemption was successfully created.'
+    else
+      render :new, notice: 'Unable to save redemption.'
     end
   end
 
@@ -69,6 +71,6 @@ class RedemptionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def redemption_params
-      params.require(:redemption).permit(:offer_share_id)
+      params.permit(:offer_share_code)
     end
 end
