@@ -45,4 +45,4 @@ gem 'rails_12factor'
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise' # authentication
-gem 'stripe' # billing
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'

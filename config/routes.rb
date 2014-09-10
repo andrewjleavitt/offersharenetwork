@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :advocates
 
+  resources :payments
+
   authenticated :user do
     root :to => 'dashboard#index', :as => :authenticated_root
   end
