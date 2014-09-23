@@ -11,4 +11,13 @@ class Offer < ActiveRecord::Base
     return redemptions
   end
 
+  def published?
+    self.published.nil? == false ? true : false
+  end
+
+  def publish!
+    self.publish = DateTime.now
+    self.save
+  end
+
 end

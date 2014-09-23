@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903015934) do
+ActiveRecord::Schema.define(version: 20140923041047) do
 
   create_table "advocates", force: true do |t|
     t.string   "name"
@@ -27,6 +27,9 @@ ActiveRecord::Schema.define(version: 20140903015934) do
     t.string   "logo_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "payment_plan_id"
+    t.date     "payment_due_date"
+    t.string   "stripe_customer_id"
   end
 
   create_table "offer_shares", force: true do |t|
@@ -47,15 +50,36 @@ ActiveRecord::Schema.define(version: 20140903015934) do
     t.string   "reward_description"
     t.string   "reward_factor"
     t.string   "redemption_value"
-    t.boolean  "active"
     t.string   "image_url"
     t.date     "published"
-    t.date     "expires"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "offers", ["customer_id"], name: "index_offers_on_customer_id"
+
+  create_table "payment_plans", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "amount"
+    t.string   "billing_period"
+    t.string   "stripe_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payments", force: true do |t|
+    t.integer  "customer_id"
+    t.integer  "payment_plan_id"
+    t.integer  "amount"
+    t.string   "auth_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "due_date"
+  end
+
+  add_index "payments", ["customer_id"], name: "index_payments_on_customer_id"
+  add_index "payments", ["payment_plan_id"], name: "index_payments_on_payment_plan_id"
 
   create_table "redemptions", force: true do |t|
     t.integer  "offer_share_id"

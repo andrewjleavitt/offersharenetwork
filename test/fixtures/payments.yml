@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 
+  payment_plan_id: 
+  amount: 
+  auth_code: MyString
+
+two:
+  customer_id: 
+  payment_plan_id: 
+  amount: 
+  auth_code: MyString

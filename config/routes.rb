@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  # resources :payments
+
+  resources :payment_plans do
+    member do
+      get 'select'
+    end
+  end
+
   devise_for :users, :controllers => { :registrations => "registrations" }
 
   resources :rewards
@@ -11,6 +19,7 @@ Rails.application.routes.draw do
   resources :advocates
 
   resources :payments
+  get 'payments/test', to: 'payments#test'
 
   authenticated :user do
     root :to => 'dashboard#index', :as => :authenticated_root
@@ -19,6 +28,10 @@ Rails.application.routes.draw do
 
   resources :customers
 
-  resources :offers
+  resources :offers do
+    member do
+      get 'publish'
+    end
+  end
 
   end

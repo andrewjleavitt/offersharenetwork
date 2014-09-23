@@ -9,10 +9,8 @@
       <th>Reward description</th>
       <th>Reward factor</th>
       <th>Redemption value</th>
-      <th>Active</th>
       <th>Image url</th>
       <th>Published</th>
-      <th>Expires</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,13 +24,11 @@
         <td><%= offer.reward_description %></td>
         <td><%= offer.reward_factor %></td>
         <td><%= offer.redemption_value %></td>
-        <td><%= offer.active %></td>
         <td><%= offer.image_url %></td>
         <td><%= offer.published %></td>
-        <td><%= offer.expires %></td>
         <td><%= link_to 'Show', offer %></td>
         <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
-        <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Publish', publish_offer_path(offer) %></td>
       </tr>
     <% end %>
   </tbody>

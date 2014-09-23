@@ -25,13 +25,13 @@
       <td><%= offer.name %></td>
       <td><%= offer.offer_shares.count %></td>
       <td><%= offer.offer_redemption_count %></td>
-      <% status_icon = offer.active ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger' %>
+      <% status_icon = offer.published? ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger' %>
       <td><span class="glyphicon <%= status_icon  %>"></span></td>
       <td><%= link_to("edit", edit_offer_path(offer)) %>
       <td><%= link_to("view", offer_path(offer)) %>
       <td>
         <% if offer.published.nil? %>
-          <%= link_to("publish", offer_path(offer)) %>
+          <%= link_to("publish", publish_offer_path(offer)) %>
         <% end %>
         <% if !offer.published.nil? && Date.new < offer.expires %>
           <%= link_to("stop", offer_path(offer)) %>

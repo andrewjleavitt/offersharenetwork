@@ -5,7 +5,7 @@ class OffersController < ApplicationController
   # GET /offers
   # GET /offers.json
   def index
-    @offers = Offer.all
+    @offers = Offer.where(customer: current_user.customer)
   end
 
   # GET /offers/1
@@ -27,28 +27,16 @@ class OffersController < ApplicationController
   def create
     @offer = Offer.new(offer_params)
     @offer.customer_id = current_user.customer_id
-    respond_to do |format|
-      if @offer.save
-        format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
-        format.json { render :show, status: :created, location: @offer }
-      else
-        format.html { render :new }
-        format.json { render json: @offer.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to @offer, notice: 'Offer was successfully created.'
   end
 
   # PATCH/PUT /offers/1
   # PATCH/PUT /offers/1.json
   def update
-    respond_to do |format|
-      if @offer.update(offer_params)
-        format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @offer }
-      else
-        format.html { render :edit }
-        format.json { render json: @offer.errors, status: :unprocessable_entity }
-      end
+    if @offer.update(offer_params)
+      redirect_to @offer, notice: 'Offer was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -57,10 +45,22 @@ class OffersController < ApplicationController
   def destroy
     @offer.destroy
     respond_to do |format|
-      format.html { redirect_to offers_url, notice: 'Offer was successfully destroyed.' }
-      format.json { head :no_content }
+      redirect_to offers_url, notice: 'Offer was successfully destroyed.'
     end
   end
+
+  def publish
+    # check to see if customer is paid
+    @offer = Offer.find(params[:id])
+
+    if current_user.customer.paid?
+      @offer.publish!
+      redirect_to @offer, notice: 'Offer was successfully published.'
+    else
+      redirect_to @offer, notice: 'Offer not published. Please update payment information to publish your offer.'
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

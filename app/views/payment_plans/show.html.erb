@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @payment_plan.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @payment_plan.description %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @payment_plan.amount %>
+</p>
+
+<p>
+  <strong>Billing period:</strong>
+  <%= @payment_plan.billing_period %>
+</p>
+
+<p>
+  <strong>Stripe:</strong>
+  <%= @payment_plan.stripe_id %>
+</p>
+
+<%= link_to 'Edit', edit_payment_plan_path(@payment_plan) %> |
+<%= link_to 'Back', payment_plans_path %>

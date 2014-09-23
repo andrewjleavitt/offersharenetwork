@@ -1,0 +1,33 @@
+<h1>Listing payment_plans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Billing period</th>
+      <th>Stripe</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payment_plans.each do |payment_plan| %>
+      <tr>
+        <td><%= payment_plan.name %></td>
+        <td><%= payment_plan.description %></td>
+        <td><%= payment_plan.amount %></td>
+        <td><%= payment_plan.billing_period %></td>
+        <td><%= payment_plan.stripe_id %></td>
+        <td><%= link_to 'Show', payment_plan %></td>
+        <td><%= link_to 'Edit', edit_payment_plan_path(payment_plan) %></td>
+        <td><%= link_to 'Destroy', payment_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Payment plan', new_payment_plan_path %>
